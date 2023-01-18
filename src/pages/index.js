@@ -2,7 +2,7 @@ import Head from 'next/head'
 import GenresList from '@/parts/GenresList'
 import tmdbApiInstance from '@/services/TmdbApi'
 
-export default function IndexPage({genres}) {
+export default function IndexPage({ genres }) {
   return (
     <>
       <Head>
