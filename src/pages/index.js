@@ -12,7 +12,7 @@ export default function IndexPage({ genres }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="index-page">
-        <h1>Movie database app</h1>
+        <h1 className="index-page__header">Movie database app</h1>
         <GenresList genres={genres} />
       </main>
     </>
@@ -20,7 +20,7 @@ export default function IndexPage({ genres }) {
 }
 
 export async function getStaticProps() {
-  const genres = await tmdbApiInstance.queryGenres()
+  const genres = (await tmdbApiInstance.queryGenres()).slice(0, 3)
 
   return {
     props: {

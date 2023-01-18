@@ -1,8 +1,12 @@
 .index-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 6rem;
   min-height: 100vh;
+
+  &__header {
+    margin-bottom: 40px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 60px;
+    }
+  }
 }
