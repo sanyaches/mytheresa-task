@@ -13,7 +13,11 @@ export default function IndexPage({ genres }) {
       </Head>
       <main className="index-page">
         <div className="container">
-          <h1 className="index-page__header">Movie database app</h1>
+          <div className="index-page__header">
+            <h1>Movie database by genre</h1>
+            <p>Take a look at genres below</p>
+          </div>
+
           <GenresList genres={genres} />
         </div>
       </main>

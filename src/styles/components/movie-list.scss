@@ -1,0 +1,9 @@
+.movie-list {
+  ul {
+    padding-left: 1rem;
+  }
+
+  &__link:hover {
+    text-decoration: underline;
+  }
+}

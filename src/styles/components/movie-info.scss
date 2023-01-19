@@ -1,0 +1,11 @@
+.movie-info {
+  &__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}

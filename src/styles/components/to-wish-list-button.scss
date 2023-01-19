@@ -1,0 +1,24 @@
+.to-wish-list-button {
+  border: 0;
+  border-radius: 0.25rem;
+  background: #b3ba51ff;
+  color: rgb(39, 47, 42);
+  line-height: 1.4;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  font-size: 1.2rem;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.5s ease, transform 0.5s ease;
+
+  &:hover,
+  &:focus {
+    background: #b3ba51aa;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}

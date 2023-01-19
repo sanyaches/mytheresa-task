@@ -1,14 +1,14 @@
-class TmdbApi {
-  #apiKey = process.env.TMDB3_API_KEY
+import { TMDB_API_KEY, TMDB_API_URL } from '@/config/tmdb'
 
+class TmdbApi {
   constructor() {
-    this.endpoint = 'https://api.themoviedb.org/3'
+    this.apiUrl = TMDB_API_URL
     this.language = 'en-US'
   }
 
   async queryGenres() {
     const res = await fetch(`
-      ${this.endpoint}/genre/movie/list?api_key=${this.#apiKey}&language=${this.language}
+      ${this.apiUrl}/genre/movie/list?api_key=${TMDB_API_KEY}&language=${this.language}
     `)
     const { genres } = await res.json()
 
@@ -17,20 +17,20 @@ class TmdbApi {
 
   async queryMoviesByGenreId(genreId, sortBy = 'popularity.desc') {
     const res = await fetch(`
-      ${this.endpoint}/discover/movie?api_key=${this.#apiKey}&with_genres=${genreId}&page=1&sort_by=${sortBy}
+      ${this.apiUrl}/discover/movie?api_key=${TMDB_API_KEY}&with_genres=${genreId}&page=1&sort_by=${sortBy}
     `)
-    const { genres } = await res.json()
+    const { results } = await res.json()
 
-    return genres
+    return results
   }
 
   async queryMovieById(movieId) {
     const res = await fetch(`
-      ${this.endpoint}/discover/movie?api_key=${this.#apiKey}&with_genres=${genreId}&page=1&sort_by=${sortBy}
+      ${this.apiUrl}/movie/${movieId}?api_key=${TMDB_API_KEY}&language=${this.language}
     `)
-    const { genres } = await res.json()
+    const movie = await res.json()
 
-    return genres
+    return movie
   }
 }
 
