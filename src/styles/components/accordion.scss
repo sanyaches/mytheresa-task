@@ -2,20 +2,36 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+    cursor: pointer;
+    transition: background 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus,
+    &:active {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
   }
 
   &__caret {
     transition: transform 0.5s;
-    transform: rotate(90deg);
-    width: 20px;
-    height: 20px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #001d0c;
   }
 
   &.is-expanded &__caret {
-    transform: rotate(270deg);
+    transform: rotate(180deg);
+  }
+
+  &__content {
+    padding: 1rem 0.6rem;
   }
 }

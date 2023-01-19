@@ -12,8 +12,10 @@ export default function IndexPage({ genres }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="index-page">
-        <h1 className="index-page__header">Movie database app</h1>
-        <GenresList genres={genres} />
+        <div className="container">
+          <h1 className="index-page__header">Movie database app</h1>
+          <GenresList genres={genres} />
+        </div>
       </main>
     </>
   )
