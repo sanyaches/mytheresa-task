@@ -1,3 +1,4 @@
+import 'sanitize.css'
 import '@/styles/globals.css'
 import '@/styles/main.scss'
 
