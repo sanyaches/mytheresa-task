@@ -1,11 +1,19 @@
 import 'sanitize.css'
 import '@/styles/globals.scss'
 import '@/styles/main.scss'
-import { wrapper } from '../store/store'
+import { Provider } from 'react-redux'
+import { storeWrapper } from '../store'
 import '@/app/fonts'
 
-function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, ...rest }) {
+  const { store, props } = storeWrapper.useWrappedStore(rest)
+  const { pageProps } = props
+
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }
 
-export default wrapper.withRedux(App)
+export default App

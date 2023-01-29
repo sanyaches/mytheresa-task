@@ -4,19 +4,23 @@ import tmdbApiInstance from '@/services/TmdbApi'
 import { lora, josefin_sans, inter } from '@/app/fonts'
 import MovieInfo from '@/components/MovieInfo'
 import AddMovieToWishListButton from '@/components/AddMovieToWishListButton'
+import { storeWrapper } from '@/store'
+import { setWishList } from '@/store/wishListSlice'
+import Link from 'next/link'
+import WishList from '@/parts/WishList'
 
 const myLoader = ({ src, width, quality }) => {
   return `https://image.tmdb.org/t/p/w400${src}?w=${width}&q=${quality || 75}`
 }
 
-export async function getServerSideProps({ query }) {
+export const getServerSideProps = storeWrapper.getServerSideProps((storeWrapper) => async ({ query }) => {
   const { id: movieId, 'genre-name': genreName } = query
   const movie = await tmdbApiInstance.queryMovieById(movieId)
 
   return {
     props: { movie, genreName },
   }
-}
+})
 
 export default function MoviePage({ movie, genreName }) {
   return (
@@ -29,6 +33,9 @@ export default function MoviePage({ movie, genreName }) {
         className={`movie-page ${genreName?.toLowerCase()} ${lora.variable} ${josefin_sans.variable} ${inter.variable}`}
       >
         <div className="container">
+          <Link href={'/'} className="movie-page__link-back">
+            Back to main page
+          </Link>
           <h1 className="movie-page__header">Movie single page - {movie.title}</h1>
 
           <div className="movie-page__main">
@@ -41,7 +48,10 @@ export default function MoviePage({ movie, genreName }) {
             </div>
           </div>
 
-          <div className="movie-page__info">My wishlist info: {movie.overview}</div>
+          <div className="movie-page__info">
+            My wishlist info:
+            <WishList />
+          </div>
         </div>
       </main>
     </>

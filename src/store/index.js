@@ -1,13 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
-import { wishListSlice } from './wishListSlice'
+import { slice as wishListSlice } from './wishListSlice'
 
-const makeStore = () =>
-  configureStore({
+const makeStore = () => {
+  return configureStore({
     reducer: {
       [wishListSlice.name]: wishListSlice.reducer,
     },
     devTools: true,
   })
+}
 
-export const wrapper = createWrapper(makeStore)
+export const storeWrapper = createWrapper(makeStore)
