@@ -4,8 +4,6 @@ import tmdbApiInstance from '@/services/TmdbApi'
 import { lora, josefin_sans, inter } from '@/app/fonts'
 import MovieInfo from '@/components/MovieInfo'
 import AddMovieToWishListButton from '@/components/AddMovieToWishListButton'
-import { storeWrapper } from '@/store'
-import { setWishList } from '@/store/wishListSlice'
 import Link from 'next/link'
 import WishList from '@/parts/WishList'
 
@@ -13,14 +11,14 @@ const myLoader = ({ src, width, quality }) => {
   return `https://image.tmdb.org/t/p/w400${src}?w=${width}&q=${quality || 75}`
 }
 
-export const getServerSideProps = storeWrapper.getServerSideProps((storeWrapper) => async ({ query }) => {
+export async function getServerSideProps({ query }) {
   const { id: movieId, 'genre-name': genreName } = query
   const movie = await tmdbApiInstance.queryMovieById(movieId)
 
   return {
     props: { movie, genreName },
   }
-})
+}
 
 export default function MoviePage({ movie, genreName }) {
   return (
