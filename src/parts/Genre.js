@@ -3,8 +3,6 @@ import tmdbApiInstance from '@/services/TmdbApi'
 import Accordion from '@/components/Accordion'
 import MovieList from './MovieList'
 
-const localCache = {}
-
 export default function Genre({ genre }) {
   const [movieList, setMovieList] = useState([])
   const [status, setStatus] = useState('unloaded')
@@ -12,8 +10,6 @@ export default function Genre({ genre }) {
   useEffect(() => {
     if (!genre.id) {
       setMovieList([])
-    } else if (localCache[genre.id]) {
-      setMovieList(localCache[genre.id])
     } else {
       requestMovieList()
     }
@@ -24,8 +20,7 @@ export default function Genre({ genre }) {
 
       const movies = await tmdbApiInstance.queryMoviesByGenreId(genre.id)
 
-      localCache[genre.id] = movies || []
-      setMovieList(localCache[genre.id])
+      setMovieList(movies)
       setStatus('loaded')
     }
   }, [genre.id])
