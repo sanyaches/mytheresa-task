@@ -1,11 +1,11 @@
 export default function MovieInfo({ movie }) {
   return (
     <div className="movie-info">
-      <p>
+      <div className="movie-info__paragraph">
         <b>Main movie info:</b>
-      </p>
-      <p>{movie.overview}</p>
-      <p>
+      </div>
+      <div className="movie-info__paragraph">{movie.overview}</div>
+      <div className="movie-info__paragraph">
         <b>Genres: </b>
         <br />
         <div className="movie-info__genres">
@@ -13,19 +13,19 @@ export default function MovieInfo({ movie }) {
             return <span key={item.id}>{item.name}</span>
           })}
         </div>
-      </p>
-      {movie.year && <p>Year: {movie.year}</p>}
+      </div>
+      {movie.year && <div className="movie-info__paragraph">Year: {movie.year}</div>}
       {movie.vote_average && (
-        <p>
+        <div className="movie-info__paragraph">
           <b>Rating: </b>
           {movie.vote_average}
-        </p>
+        </div>
       )}
       {movie.runtime && (
-        <p>
+        <div className="movie-info__paragraph">
           <b>Duration: </b>
           {movie.runtime} min
-        </p>
+        </div>
       )}
     </div>
   )
