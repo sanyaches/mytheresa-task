@@ -7,7 +7,6 @@ const makeStore = () => {
     reducer: {
       [wishListSlice.name]: wishListSlice.reducer,
     },
-    devTools: true,
   })
 }
 

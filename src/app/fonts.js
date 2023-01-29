@@ -2,7 +2,6 @@ import { Inter, Roboto_Mono, Lora, Nunito_Sans, Josefin_Sans } from '@next/font/
 
 export const inter = Inter({
   subsets: ['latin'],
-  // weight: ['400', '700'],
   variable: '--font-inter',
   display: 'optional',
 })
@@ -15,7 +14,6 @@ export const roboto_mono = Roboto_Mono({
 
 export const lora = Lora({
   subsets: ['latin'],
-  // weight: ['400', '700'],
   variable: '--font-lora',
   display: 'optional',
 })
